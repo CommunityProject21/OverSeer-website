@@ -1,4 +1,4 @@
-# OverSeer React App Master Branch
+# OverSeer React App Heet's Branch
 
 ## Available Scripts
 
