@@ -1,4 +1,4 @@
-# OverSeer React App Staging Branch
+# OverSeer React App Staging Branch 
 
 ## Available Scripts
 
