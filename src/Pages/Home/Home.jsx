@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-export default function Personald() {
+export default function Home() {
     return(
         <div>
             Happy Hacking
