@@ -1,10 +1,13 @@
 import React from 'react';
 import './style.scss';
+import Header from '../../Components/Header/Header'
 
 export default function Home() {
     return(
         <div>
-            Happy Hacking
+            <div className="section">
+                <Header />
+            </div>
         </div>
     );
 } 
