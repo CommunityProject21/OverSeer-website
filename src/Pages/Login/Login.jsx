@@ -7,6 +7,7 @@ import './style.scss';
 
 export default function Login() {
     return (
+        <div classname="box3">
         <Box
             component="form"
             sx={{
@@ -14,10 +15,11 @@ export default function Login() {
             }}
             noValidate
             autoComplete="off"
+            
         >
-            <div className="box1">
+            <div className="box2">
             <form action="">
-                <div className="box2">
+                <div className="box1">
                     <TextField
                         required
                         id="outlined-required"
@@ -25,7 +27,7 @@ export default function Login() {
                         defaultValue="Hello World"
                     />
                 </div>
-                <div className="box2">
+                <div className="box1">
 
                     <TextField
                         required
@@ -36,7 +38,7 @@ export default function Login() {
                     />
                 </div>
 
-                <div className="box2">
+                <div className="box1">
 
                     <Button variant="contained">Login</Button>
                 </div>
@@ -45,6 +47,7 @@ export default function Login() {
 
 
         </Box>
+        </div>
     );
 }
 

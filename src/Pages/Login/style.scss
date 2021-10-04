@@ -12,7 +12,18 @@
     flex-direction: column;
     // justify-content: center;
     align-items: center;
-    .box2{
-        
-    }
+    padding: 8px;
+    margin:4px;
+}
+
+.box2{
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    // border: 8px solid black;
+}
+
+.box3{
+    
 }
