@@ -1,6 +1,5 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import {Typography,TextField,Button} from '@mui/material';
+import {Box,Typography,TextField,Button} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const DashboardDetails = () => {
@@ -37,7 +36,7 @@ const DashboardDetails = () => {
                          Patient ID :
                      </Typography>
                      <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                         
+                         id displayed here
                      </Typography>
                  </Box>
                  <Box sx={{display: 'flex', width: '55%', }}>
@@ -45,7 +44,7 @@ const DashboardDetails = () => {
                          Patient Name :
                      </Typography>
                      <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                         
+                         name displayed here
                      </Typography>
                  </Box>
              </Box>
