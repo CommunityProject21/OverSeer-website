@@ -35,7 +35,7 @@ const DashboardDetails = () => {
                      <Typography sx={{ px: 2, fontSize: '120%'}} style={{fontWeight: '900'}}>
                          Patient ID :
                      </Typography>
-                     <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
+                     <Typography className="piddd" sx={{ fontSize: '120%',fontWeight: 'medium' }}>
                          id displayed here
                      </Typography>
                  </Box>
@@ -43,7 +43,7 @@ const DashboardDetails = () => {
                      <Typography sx={{ px: 2, fontSize: '120%'}} style={{fontWeight: '900'}}>
                          Patient Name :
                      </Typography>
-                     <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
+                     <Typography className= "pnamedd" sx={{ fontSize: '120%',fontWeight: 'medium' }}>
                          name displayed here
                      </Typography>
                  </Box>
