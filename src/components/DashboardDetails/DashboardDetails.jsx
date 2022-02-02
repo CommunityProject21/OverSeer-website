@@ -13,7 +13,7 @@ const DashboardDetails = () => {
             <Box
                  component="form"
                  sx={{
-                     '& .MuiTextField-root': { m: 1, width: '45%' },
+                     '& .MuiTextField-root': { m: 1, width: '47%' },
                      display: 'flex',
                      justifyContent: 'center',
                      alignItems: 'center',
@@ -47,7 +47,7 @@ const DashboardDetails = () => {
                          name displayed here
                      </Typography>
                  </Box>
-             </Box>
+            </Box>
         </div>
     );
 }
