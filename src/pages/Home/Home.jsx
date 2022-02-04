@@ -1,11 +1,12 @@
 import React from "react";
-import Button from '@mui/material/Button';
+import DashboardDetails from '../../components/DashboardDetails/DashboardDetails'
+import PersonalDetails from '../../components/PersonalDetails/PersonalDetails'
 
 const Home = () => {
     return(
-        <div>
-            Home Page with tested as Mateial UI working.
-            <div><Button variant="contained">Hello World</Button></div>
+        <div style={{display: 'flex', flexDirection: 'column', gap: 25}}>
+            <DashboardDetails />
+            <PersonalDetails />
         </div>
     );    
 }
