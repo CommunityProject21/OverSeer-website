@@ -7,23 +7,39 @@
 // box{
     
 // }
-.box1{
-    display:flex;
-    flex-direction: column;
-    // justify-content: center;
-    align-items: center;
-    padding: 8px;
-    margin:4px;
-}
 
-.box2{
-    position:absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    // border: 8px solid black;
-}
+// .box1{
+//     display:flex;
+//     flex-direction: column;
+//     // justify-content: center;
+//     align-items: center;
+//     padding: 8px;
+//     margin:4px;
+// }
 
-.box3{
+// .box2{
+//     position:absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%,-50%);
+//     // border: 8px solid black;
+// }
+
+.body2{
+    width: 40%;    
+    margin-top: 25px;
+
+    .btn1{
+        // width: 10%;
+        // margin: 2em;
+        // padding: 0.9em 2em;
+    }
     
+    .body22{
+        /* width: 60%; */
+        margin: 1em;
+        padding: 2em;
+        /* justify-content: center; */
+    }
 }
+
