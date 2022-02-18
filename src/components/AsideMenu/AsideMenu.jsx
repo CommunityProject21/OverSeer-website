@@ -2,6 +2,7 @@ import React from 'react';
 import {Divider,List,ListItem,ListItemButton,ListItemIcon,ListItemText,Paper,IconButton,Tooltip,Typography,Box} from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
 import {KeyboardArrowDown,AccountCircle,LocalHotel,ReceiptLong,VideoLabel,DoNotTouch,Dns} from '@mui/icons-material';
+import { width } from '@mui/system';
 
 const data = [
     { icon: <AccountCircle />, label: 'Personal Details' },
@@ -30,9 +31,9 @@ const AsideMenu = () => {
     const [open, setOpen] = React.useState(true);
     return(
         <div>
-            <Box sx={{height: '100vh',backgroundColor: '#012a4a',display: 'flex',justifyContent: 'center'}}>
-                <Box sx={{ display: 'flex' }}>
-                    <ThemeProvider
+            <Box sx={{height: '100vh',width:"100%",backgroundColor: '#012a4a',display: 'flex'}}>
+                <Box sx={{ display: 'flex',width: '100%'}}>
+                    <ThemeProvider 
                         theme={createTheme({
                         components: {
                             MuiListItemButton: {
@@ -48,10 +49,9 @@ const AsideMenu = () => {
                         },
                         })}
                     >
-                        <Paper elevation={0} sx={{ maxWidth: 256 }}>
+                        <Paper elevation={0} sx={{ width: "100%" }}>
                         <FireNav component="nav" disablePadding>
                             <ListItemButton component="a" href="#customized-list">
-                                {/* <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon> */}
                                 <ListItemText
                                     sx={{ my: 0 }}
                                     primary="OverSeer"
@@ -96,28 +96,28 @@ const AsideMenu = () => {
                                     <ListItemText
                                     primary="Patient Details to Display"
                                     primaryTypographyProps={{
-                                        fontSize: 15,
+                                        fontSize: 17,
                                         fontWeight: 'medium',
                                         lineHeight: '20px',
-                                        mb: '2px',
+                                        mb: 3,
                                     }}
-                                    secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
-                                    secondaryTypographyProps={{
-                                        noWrap: true,
-                                        fontSize: 12,
-                                        lineHeight: '16px',
-                                        color: open ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.5)',
-                                    }}
+                                    // secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
+                                    // secondaryTypographyProps={{
+                                    //     noWrap: true,
+                                    //     fontSize: 12,
+                                    //     lineHeight: '16px',
+                                    //     color: open ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.5)',
+                                    // }}
                                     sx={{ my: 0 }}
                                     />
-                                    <KeyboardArrowDown
+                                    {/* <KeyboardArrowDown
                                     sx={{
                                         mr: -1,
                                         opacity: 0,
                                         transform: open ? 'rotate(-180deg)' : 'rotate(0)',
                                         transition: '0.2s',
-                                    }}
-                                    />
+                                    }} 
+                                    /> */}
                                 </ListItemButton>
                                 {open &&
                                     data.map((item) => (
@@ -130,7 +130,7 @@ const AsideMenu = () => {
                                         </ListItemIcon>
                                         <ListItemText
                                         primary={item.label}
-                                        primaryTypographyProps={{ fontSize: 14, fontWeight: 'medium' }}
+                                        primaryTypographyProps={{ fontSize: 15, fontWeight: 'medium' }}
                                         />
                                     </ListItemButton>
                                     ))}
