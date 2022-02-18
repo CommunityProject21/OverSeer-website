@@ -11,10 +11,10 @@ import AsideMenu from '../../components/AsideMenu/AsideMenu';
 const Home = () => {
     return(
         <Box sx={{display: 'flex', flexDirection: 'row', width: '100%'}}>
-            <Box sx={{width: '15%'}}>
+            <Box sx={{width: '18%'}}>
                 <AsideMenu />
             </Box>
-            <Box sx={{display: 'flex', flexDirection: 'column', gap: 5,width: '85%'}}>
+            <Box sx={{display: 'flex', flexDirection: 'column', gap: 5,width: '82%'}}>
                 <DashboardDetails />
                 <PersonalDetails />
             </Box>
