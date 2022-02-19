@@ -1,16 +1,16 @@
 import React from 'react';
-import {Divider,List,ListItem,ListItemButton,ListItemIcon,ListItemText,Paper,IconButton,Tooltip,Typography,Box} from '@mui/material';
+import {Divider,List,ListItem,ListItemButton,ListItemIcon,ListItemText,Paper,Box} from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-import {KeyboardArrowDown,AccountCircle,LocalHotel,ReceiptLong,VideoLabel,DoNotTouch,Dns} from '@mui/icons-material';
-import { width } from '@mui/system';
+import {AccountCircle,LocalHotel,ReceiptLong,VideoLabel,DoNotTouch,Dns} from '@mui/icons-material';
+//import { width } from '@mui/system';
 
 const data = [
-    { icon: <AccountCircle />, label: 'Personal Details' },
-    { icon: <Dns />, label: 'Patient Observations' },
-    { icon: <DoNotTouch />, label: 'Patient Allergies' },
-    { icon: <LocalHotel />, label: 'Patients Conditions' },
-    { icon: <VideoLabel />, label: 'Monitoring Devices' },
-    { icon: <ReceiptLong />, label: 'Medication Records' },
+    { link: '/home', icon: <AccountCircle />, label: 'Personal Details' },
+    { link: '/patient-observation', icon: <Dns />, label: 'Patient Observations' },
+    { link: '/patient-allergies', icon: <DoNotTouch />, label: 'Patient Allergies' },
+    { link: '/patient-condition', icon: <LocalHotel />, label: 'Patients Conditions' },
+    { link: '/patient-devices', icon: <VideoLabel />, label: 'Monitoring Devices' },
+    { link: '/medication-records', icon: <ReceiptLong />, label: 'Medication Records' },
 ];
   
 const FireNav = styled(List)({
@@ -96,9 +96,9 @@ const AsideMenu = () => {
                                     <ListItemText
                                     primary="Patient Details to Display"
                                     primaryTypographyProps={{
-                                        fontSize: 17,
+                                        fontSize: 18,
                                         fontWeight: 'medium',
-                                        lineHeight: '20px',
+                                        lineHeight: '23px',
                                         mb: 3,
                                     }}
                                     // secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
@@ -121,18 +121,19 @@ const AsideMenu = () => {
                                 </ListItemButton>
                                 {open &&
                                     data.map((item) => (
-                                    <ListItemButton
-                                        key={item.label}
-                                        sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)' }}
-                                    >
-                                        <ListItemIcon sx={{ color: 'inherit' }}>
-                                        {item.icon}
-                                        </ListItemIcon>
-                                        <ListItemText
-                                        primary={item.label}
-                                        primaryTypographyProps={{ fontSize: 15, fontWeight: 'medium' }}
-                                        />
-                                    </ListItemButton>
+                                        <ListItemButton
+                                            component="a" href={item.link}
+                                            key={item.label}
+                                            sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)' }}
+                                        >
+                                            <ListItemIcon sx={{ color: 'inherit' }}>
+                                                {item.icon}
+                                            </ListItemIcon>
+                                            <ListItemText
+                                                primary={item.label}
+                                                primaryTypographyProps={{ fontSize: 17, fontWeight: 'medium' }}
+                                            />
+                                        </ListItemButton>
                                     ))}
                             </Box>
                         </FireNav>
