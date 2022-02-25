@@ -1,8 +1,62 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box,Typography,TextField,Button} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import axios from 'axios';
+//import { display } from '@mui/system';
 
 const DashboardDetails = () => {
+
+    const [userid,setUserid] = useState('');
+    const [displayid,setdisplayid] = useState("");
+    const [name,setName] = useState('');
+
+    const handleInputs = (e) =>{
+        console.log(e.target.value);
+        setUserid(e.target.value);
+    };
+
+    // useEffect(() => {
+    //     let params = JSON.stringify({"userid":userid});
+    //     async function getData() {
+    //         // await axios({
+    //         //     method: 'get',
+    //         //     url: 'http://overseerbackend.herokuapp.com/details',
+    //         //     {"userid":userid},
+    //         //     headers:{}
+    //         // });
+    //         // await axios.get('http://overseerbackend.herokuapp.com/details',{"userid":userid})
+    //         fetch('http://overseerbackend.herokuapp.com/details',{
+    //             method: 'post',
+    //             body: params,
+    //             headers: {}
+    //         })
+    //         .then(res => setName(res.name))
+    //     }
+    //     getData();  
+    // },[displayid]);
+
+    async function getData() {
+        //let params = JSON.stringify({"userid":userid});
+        await axios({
+            method: 'GET',
+            dataType: "json",
+            url: 'http://overseerbackend.herokuapp.com/details',
+            body: JSON.stringify({"userid":userid}),
+            headers:{
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods': "Origin, X-Requested-With, Content-Type, Accept"
+            },
+        })
+        //await axios.get('http://overseerbackend.herokuapp.com/details',params)
+        // fetch('http://overseerbackend.herokuapp.com/details',{
+        //     method: 'post',
+        //     body: JSON.stringify({"userid":userid}),
+        //     headers: {}
+        // })
+        .then(res => setName(res.name))
+    }
+
     return(
         <div>
             <Box sx={{width: '100%'}}>
@@ -26,9 +80,11 @@ const DashboardDetails = () => {
                      sx={{backgroundColor: '#fff', borderColor: '#000', borderRadius: 2}}
                      id="outlined-search" 
                      label="Enter the Patient ID" 
-                     type="search" 
+                     type="search"
+                     value={userid}
+                     onChange={handleInputs} 
                  />
-                 <Button variant="contained" size="large" sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} startIcon={<SearchIcon />}>Search</Button>
+                 <Button onClick={() => {setdisplayid(userid); getData();}} variant="contained" size="large" sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} startIcon={<SearchIcon />}>Search</Button>
             </Box>
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                  <Box sx={{display: 'flex', width: '55%', }}>
@@ -36,7 +92,7 @@ const DashboardDetails = () => {
                          Patient ID :
                      </Typography>
                      <Typography className="piddd" sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                         id displayed here
+                         {displayid}
                      </Typography>
                  </Box>
                  <Box sx={{display: 'flex', width: '55%', }}>
@@ -44,7 +100,7 @@ const DashboardDetails = () => {
                          Patient Name :
                      </Typography>
                      <Typography className= "pnamedd" sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                         name displayed here
+                         {name}
                      </Typography>
                  </Box>
             </Box>
