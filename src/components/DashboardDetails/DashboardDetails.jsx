@@ -5,9 +5,8 @@ import axios from 'axios';
 //import { display } from '@mui/system';
 
 const DashboardDetails = () => {
-    const [data,setData] = useState();
     const [userid,setUserid] = useState('');
-    const [displayid,setdisplayid] = useState("");
+    const [displayid,setdisplayid] = useState('');
     const [name,setName] = useState('');
 
     const handleInputs = (e) =>{
@@ -16,17 +15,14 @@ const DashboardDetails = () => {
     };
 
     useEffect(() => {
-        axios({
-            method: 'POST',
-            url: 'https://overseerbackend.herokuapp.com/details',
-            data: {userid:displayid}
-        }).then(res => setData(res.data))
+        if(displayid!==''){
+            axios({
+                method: 'POST',
+                url: 'https://overseerbackend.herokuapp.com/details',
+                data: {userid:displayid}
+            }).then(res => setName(res.data.name))
+        }
     },[displayid]);
-    
-    useEffect(() => {
-        if(data)
-        setName(data.name)
-    },[data])
 
 
     return(
@@ -56,7 +52,7 @@ const DashboardDetails = () => {
                      value={userid}
                      onChange={handleInputs} 
                  />
-                 <Button onClick={() => {setdisplayid(userid)}} variant="contained" size="large" sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} startIcon={<SearchIcon />}>Search</Button>
+                 <Button onClick={() => setdisplayid(userid)} variant="contained" size="large" sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} startIcon={<SearchIcon />}>Search</Button>
             </Box>
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                  <Box sx={{display: 'flex', width: '55%', }}>
