@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Box,Typography,TextField,Button} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 //import { display } from '@mui/system';
 
 const DashboardDetails = () => {
-
+    const [data,setData] = useState();
     const [userid,setUserid] = useState('');
     const [displayid,setdisplayid] = useState("");
     const [name,setName] = useState('');
@@ -15,47 +15,19 @@ const DashboardDetails = () => {
         setUserid(e.target.value);
     };
 
-    // useEffect(() => {
-    //     let params = JSON.stringify({"userid":userid});
-    //     async function getData() {
-    //         // await axios({
-    //         //     method: 'get',
-    //         //     url: 'http://overseerbackend.herokuapp.com/details',
-    //         //     {"userid":userid},
-    //         //     headers:{}
-    //         // });
-    //         // await axios.get('http://overseerbackend.herokuapp.com/details',{"userid":userid})
-    //         fetch('http://overseerbackend.herokuapp.com/details',{
-    //             method: 'post',
-    //             body: params,
-    //             headers: {}
-    //         })
-    //         .then(res => setName(res.name))
-    //     }
-    //     getData();  
-    // },[displayid]);
+    useEffect(() => {
+        axios({
+            method: 'POST',
+            url: 'https://overseerbackend.herokuapp.com/details',
+            data: {userid:displayid}
+        }).then(res => setData(res.data))
+    },[displayid]);
+    
+    useEffect(() => {
+        if(data)
+        setName(data.name)
+    },[data])
 
-    async function getData() {
-        //let params = JSON.stringify({"userid":userid});
-        await axios({
-            method: 'GET',
-            dataType: "json",
-            url: 'http://overseerbackend.herokuapp.com/details',
-            body: JSON.stringify({"userid":userid}),
-            headers:{
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : '*',
-                'Access-Control-Allow-Methods': "Origin, X-Requested-With, Content-Type, Accept"
-            },
-        })
-        //await axios.get('http://overseerbackend.herokuapp.com/details',params)
-        // fetch('http://overseerbackend.herokuapp.com/details',{
-        //     method: 'post',
-        //     body: JSON.stringify({"userid":userid}),
-        //     headers: {}
-        // })
-        .then(res => setName(res.name))
-    }
 
     return(
         <div>
@@ -84,7 +56,7 @@ const DashboardDetails = () => {
                      value={userid}
                      onChange={handleInputs} 
                  />
-                 <Button onClick={() => {setdisplayid(userid); getData();}} variant="contained" size="large" sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} startIcon={<SearchIcon />}>Search</Button>
+                 <Button onClick={() => {setdisplayid(userid)}} variant="contained" size="large" sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} startIcon={<SearchIcon />}>Search</Button>
             </Box>
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                  <Box sx={{display: 'flex', width: '55%', }}>
