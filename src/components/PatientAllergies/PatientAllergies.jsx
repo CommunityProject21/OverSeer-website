@@ -5,8 +5,8 @@ const PatientAllergies = () => {
     return(
         <div>
             <Box sx={{ display: 'flex',justifyContent: 'center', width: '100%'}}>
-                <Box sx={{width: '56%', display: 'flex',flexDirection: 'column',justifyContent: 'flex-start'}}>
-                    <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:4}}>Allergies Suffered the Patient :-</Typography>
+                <Box sx={{width: '60%', display: 'flex',flexDirection: 'column',justifyContent: 'flex-start'}}>
+                    <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:4}}>Allergies Suffered by the Patient :-</Typography>
                     {/* <Box sx={{display: 'flex',flexDirection: 'column'}}>
                         <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Address of the Patient : 1060 Hansen Overpass Suite 86, Boston, Massachusetts, Suffolk County</Typography>
 
