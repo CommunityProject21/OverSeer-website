@@ -25,21 +25,34 @@
 //     // border: 8px solid black;
 // }
 
-.body2{
-    width: 40%;    
-    margin-top: 25px;
+// .body2{
+//     width: 40%;    
+//     margin-top: 25px;
 
-    .btn1{
-        // width: 10%;
-        // margin: 2em;
-        // padding: 0.9em 2em;
-    }
+//     .btn1{
+//         // width: 10%;
+//         // margin: 2em;
+//         // padding: 0.9em 2em;
+//     }
     
-    .body22{
-        /* width: 60%; */
-        margin: 1em;
-        padding: 2em;
-        /* justify-content: center; */
-    }
+//     .body22{
+//         /* width: 60%; */
+//         margin: 1em;
+//         padding: 2em;
+//         /* justify-content: center; */
+//     }
+// }
+
+.BoxShadow{
+    /* background-color:rgb(255, 238, 244); */
+    /* color: "green" */
+    /* opacity: 50%; */
 }
 
+.box2{
+    border-radius: 2em;
+    // background-color:rgb(255, 255, 255);
+    // border: 7px;
+    border-color: rgb(223, 222, 222);
+    border-style:solid;
+}
