@@ -1,7 +1,21 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import {Box,Typography} from "@mui/material";
+import axios from 'axios';
 
 const PatientObservation = () => {
+
+    const [data,setData] = useState({});
+
+    useEffect(() => {
+        const newid = JSON.parse(localStorage.getItem('user'));
+        axios({
+            method: 'POST',
+            url: 'https://overseerbackend.herokuapp.com/observations',
+            data: {userid:newid.userid}
+        })
+        .then(res => setData(res.data))
+    },[]);
+
     return(
         <div>
             <Box sx={{ display: 'flex',justifyContent: 'center', width: '100%'}}>

@@ -14,15 +14,20 @@ const DashboardDetails = () => {
         setUserid(e.target.value);
     };
 
+    // useEffect(() => {
+        // localStorage.setItem('user',JSON.stringify({}));
+    // },[])
+
     useEffect(() => {
-        if(displayid){
+            const newid = JSON.parse(localStorage.getItem('user'));
             axios({
                 method: 'POST',
                 url: 'https://overseerbackend.herokuapp.com/details',
-                data: {userid:displayid}
+                data: {userid:newid.userid}
             }).then(res => setData(res.data))
-        }
-    },[displayid]);
+
+            setUserid(newid.userid);
+    },[]);
 
 
     return(
@@ -32,7 +37,7 @@ const DashboardDetails = () => {
                     OverSeer DashBoard
                 </Typography>
             </Box>
-            <Box
+            {/* <Box
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '47%' },
@@ -64,14 +69,14 @@ const DashboardDetails = () => {
                 >
                     Search
                 </Button>
-            </Box>
+            </Box> */}
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                 <Box sx={{display: 'flex', width: '55%', }}>
                     <Typography sx={{ px: 2, fontSize: '120%'}} style={{fontWeight: '900'}}>
                         Patient ID :
                     </Typography>
                     <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                        {displayid}
+                        {userid}
                     </Typography>
                 </Box>
                 <Box sx={{display: 'flex', width: '55%', }}>

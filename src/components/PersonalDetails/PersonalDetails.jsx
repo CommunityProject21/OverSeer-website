@@ -4,22 +4,21 @@ import axios from 'axios';
 
 const PersonalDetails = () => {
 
-    const [id,setid] = useState({})
+    //const [id,setid] = useState({})
     const [data,setData] = useState({});
 
+    // useEffect(() => {
+    //     localStorage.setItem('user',JSON.stringify({}));
+    // },[])
+
     useEffect(() => {
-        setInterval(() =>{
             const newid = JSON.parse(localStorage.getItem('user'));
-            if(id!==newid){
-                axios({
-                    method: 'POST',
-                    url: 'https://overseerbackend.herokuapp.com/details',
-                    data: {userid:newid.userid}
-                })
-                .then(res => setData(res.data))
-                .then(() => setid(newid))
-            }
-        },2000)
+            axios({
+                method: 'POST',
+                url: 'https://overseerbackend.herokuapp.com/details',
+                data: {userid:newid.userid}
+            })
+            .then(res => setData(res.data))
     },[]);
 
     return (
@@ -36,11 +35,17 @@ const PersonalDetails = () => {
                             Zip Code :&nbsp;{data.zipcode}
                         </Typography>
 
-                        <Typography className="genpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Gender :&nbsp;Male </Typography>
+                        <Typography className="genpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
+                            Gender :&nbsp;{data.gender} 
+                        </Typography>
 
-                        <Typography className="racpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Race of the patient :&nbsp;White</Typography>
+                        <Typography className="racpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
+                            Race of the patient :&nbsp;{data.race}
+                        </Typography>
 
-                        <Typography className="ethpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Ethnicity of the patient :&nbsp;nonhispanic</Typography>
+                        <Typography className="ethpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
+                            Ethnicity of the patient :&nbsp;{data.ethnicity}
+                        </Typography>
                     </Box>                
                 </Box>
             </Box> 

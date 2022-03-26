@@ -30,7 +30,7 @@ const FireNav = styled(List)({
 const AsideMenu = () => {
     const [open, setOpen] = React.useState(true);
     return(
-        <div>
+        <div style={{position: 'fixed'}}>
             <Box sx={{height: '100vh',width:"100%",backgroundColor: '#012a4a',display: 'flex'}}>
                 <Box sx={{ display: 'flex',width: '100%'}}>
                     <ThemeProvider 
