@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Box,Typography,TextField,Button} from '@mui/material';
+import {Box,Typography,Button,Link} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
+import { style } from '@mui/system';
 
 const DashboardDetails = () => {
 
@@ -33,8 +34,9 @@ const DashboardDetails = () => {
     return(
         <div>
             <Box sx={{width: '100%'}}>
-                <Typography variant="h4" component="div" gutterBottom sx={{fontWeight: 900,m:2,ml:3,color: '#6c757d'}}>
+                <Typography variant="h4" component="div" gutterBottom sx={{fontWeight: 900,m:2,ml:3,color: '#6c757d',display: 'flex',justifyContent: 'space-between'}}>
                     OverSeer DashBoard
+                    <Link style={{textDecoration: 'none'}} href='/'><Button variant="outlined">LOG OUT</Button></Link>
                 </Typography>
             </Box>
             {/* <Box
