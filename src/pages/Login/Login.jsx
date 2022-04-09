@@ -13,9 +13,20 @@ import axios from 'axios';
 
 export default function Login() {
 
+    const [id,setId] = useState();
+    const [password,setPassword] = useState();
     const [data,setData] = useState({login:false});
     const history = useNavigate();
 
+    const handleInputs = (e) => {
+        console.log(e.target.value);
+        setId(e.target.value);
+    }
+
+    const handleInputs1 = (e) => {
+        console.log(e.target.value);
+        setPassword(e.target.value);
+    }
 
     useEffect(() => {
         localStorage.setItem('user',JSON.stringify({}));
@@ -48,6 +59,7 @@ export default function Login() {
                     style={{marginTop: '10%'}}
                     id="input-with-icon-textfield"
                     label="Enter User ID"
+                    onChange={handleInputs}
                     InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -61,6 +73,7 @@ export default function Login() {
                     style={{marginTop: '10%'}}
                     id="input-with-icon-textfield"
                     label="Password"
+                    onChange={handleInputs1}
                     InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -78,8 +91,8 @@ export default function Login() {
                                     method: 'POST',
                                     url: 'https://overseerbackend.herokuapp.com/login',
                                     data: {
-                                        userid:"df91aedf-3e17-44c3-b273-62e35f518475",
-                                        password:"BqOWzpGWY6q*",
+                                        userid:id,
+                                        password:password,
                                         usertype:"P"
                                     }
                                 })
