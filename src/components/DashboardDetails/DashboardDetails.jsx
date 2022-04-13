@@ -35,22 +35,22 @@ const DashboardDetails = () => {
             const data = {userid:newid.userid}
 
             console.log(headers);
-            // axios({
-            //     method: 'POST',
-            //     url: 'https://overseerbackend.herokuapp.com/details',
-            //     data: {userid:newid.userid},
-            //     headers: headers
+            axios({
+                method: 'POST',
+                url: 'https://overseerbackend.herokuapp.com/details',
+                data: {userid:newid.userid},
+                // headers: headers
 
-            // }).then(res => setData(res.data))
+            }).then(res => setData(res.data))
 
-            axios.post('https://overseerbackend.herokuapp.com/details', data, {
-                headers: {
-                    "Access-Control-Allow-Origin" : "*",
-                    "Content-type": "Application/json",
-                    "Authorization": `Bearer ${newid.accesstoken}`
-                    }   
-            }).then(res => setData(res))
-            .then(res => console.log(res))
+            // axios.post('https://overseerbackend.herokuapp.com/details', data, {
+            //     headers: {
+            //         "Access-Control-Allow-Origin" : "*",
+            //         "Content-type": "Application/json",
+            //         "Authorization": `Bearer ${newid.accesstoken}`
+            //         }   
+            // }).then(res => setData(res))
+            // .then(res => console.log(res))
 
             setUserid(newid.userid);
     },[]);
