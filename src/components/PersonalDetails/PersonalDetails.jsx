@@ -16,7 +16,8 @@ const PersonalDetails = () => {
             axios({
                 method: 'POST',
                 url: 'https://overseerbackend.herokuapp.com/details',
-                data: {userid:newid.userid}
+                data: {userid:newid.userid},
+                headers:{"x-access-token":newid.accesstoken}
             })
             .then(res => setData(res.data))
     },[]);

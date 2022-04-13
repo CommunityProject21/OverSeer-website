@@ -34,7 +34,7 @@ export default function Login() {
 
     useEffect(() => {
         if(data.login === true){
-            localStorage.setItem('user',JSON.stringify({userid:data.userid}));
+            localStorage.setItem('user',JSON.stringify({userid:data.userid,accesstoken:data.token}));
             history('/home');
         }
     },[data]);
@@ -73,6 +73,7 @@ export default function Login() {
                     style={{marginTop: '10%'}}
                     id="input-with-icon-textfield"
                     label="Password"
+                    type='password'
                     onChange={handleInputs1}
                     InputProps={{
                     startAdornment: (
@@ -84,7 +85,6 @@ export default function Login() {
                     variant="standard"
                 />
                 <Box sx={{mt:5}}>
-                    <Link to={(data.login)? "/home":"/"} >
                         <Button sx={{ justifiedContent: 'center' }} color='primary' variant='contained'
                             onClick={async() => {
                                 await axios({
@@ -101,7 +101,6 @@ export default function Login() {
                         >
                             Log in
                         </Button>
-                    </Link>
                 </Box>
             </Box>
 

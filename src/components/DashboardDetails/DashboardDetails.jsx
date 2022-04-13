@@ -21,11 +21,36 @@ const DashboardDetails = () => {
 
     useEffect(() => {
             const newid = JSON.parse(localStorage.getItem('user'));
-            axios({
-                method: 'POST',
-                url: 'https://overseerbackend.herokuapp.com/details',
-                data: {userid:newid.userid}
-            }).then(res => setData(res.data))
+            // const headers = {
+            //     "Authorization":`${newid.accesstoken}`,
+            //     "Access-Control-Allow-Credentials": true,
+            //     "Access-Control-Allow-Origin": true,
+            //     // 'Content-Type': 'application/json',
+            // }
+
+            const headers = {
+                'Authorization': `Bearer ${newid.accesstoken}`
+              }
+
+            const data = {userid:newid.userid}
+
+            console.log(headers);
+            // axios({
+            //     method: 'POST',
+            //     url: 'https://overseerbackend.herokuapp.com/details',
+            //     data: {userid:newid.userid},
+            //     headers: headers
+
+            // }).then(res => setData(res.data))
+
+            axios.post('https://overseerbackend.herokuapp.com/details', data, {
+                headers: {
+                    "Access-Control-Allow-Origin" : "*",
+                    "Content-type": "Application/json",
+                    "Authorization": `Bearer ${newid.accesstoken}`
+                    }   
+            }).then(res => setData(res))
+            .then(res => console.log(res))
 
             setUserid(newid.userid);
     },[]);
