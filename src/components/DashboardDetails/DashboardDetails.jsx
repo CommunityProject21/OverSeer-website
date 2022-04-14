@@ -97,6 +97,7 @@ const DashboardDetails = () => {
                     Search
                 </Button>
             </Box> */}
+
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                 <Box sx={{display: 'flex', width: '55%', }}>
                     <Typography sx={{ px: 2, fontSize: '120%'}} style={{fontWeight: '900'}}>
