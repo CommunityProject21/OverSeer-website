@@ -33,8 +33,8 @@ const PatientObservation = () => {
                                         Object.keys(prop.observations).length > 3 && Object.keys(prop.observations).map((key, i) => {
                                             return(
                                                 <Box component="div" variant="h4" key={i}>
-                                                    <Typography component="span" sx={{fontSize:'120%',fontWeight:'bolder'}}>{key}: </Typography>
-                                                    <Typography component="span" sx={{fontSize:'120%'}} >{prop.observations[key]}</Typography>
+                                                    <Typography component="span" sx={{fontSize:'115%',fontWeight:600}}>{key}: </Typography>
+                                                    <Typography component="span" sx={{fontSize:'110%'}} >{prop.observations[key]}</Typography>
                                                 </Box>
                                             );
                                         })

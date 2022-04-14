@@ -40,7 +40,13 @@ export default function Login() {
 
     useEffect(() => {
         if(data!==undefined && data.login === true){
-            localStorage.setItem('user',JSON.stringify({userid:data.userid,accesstoken:data.token}));
+            localStorage.setItem('user',JSON.stringify(
+                {
+                    userid:data.userid,
+                    accesstoken:data.token,
+                    userType:(alignment==='left')? 'P':'D'
+                }
+            ));
             history('/home');
         }
     },[data]);
@@ -65,10 +71,14 @@ export default function Login() {
                         aria-label="text alignment"
                     >
                         <ToggleButton value="left" aria-label="left aligned">
-                            PATIENT
+                            <Box sx={{px:1,py:.5}}>
+                                PATIENT
+                            </Box>
                         </ToggleButton>
                         <ToggleButton value="right" aria-label="right aligned">
-                            DOCTOR
+                            <Box sx={{px:1,py:.5}}>
+                                DOCTOR
+                            </Box>
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </Stack>
