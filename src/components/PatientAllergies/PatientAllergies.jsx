@@ -22,7 +22,8 @@ const PatientAllergies = () => {
                 <Box sx={{width: '60%', display: 'flex',flexDirection: 'column',justifyContent: 'flex-start'}}>
                     <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:4}}>Allergies Suffered by the Patient :-</Typography>
                     {
-                        data.allergies !== undefined && data.allergies.map((prop)=>{
+                        (data.allergies !== undefined && data.message !== "No allergies to Report for given ID.")?
+                        data.allergies.map((prop)=>{
                             return(
                                 <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                                     <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
@@ -38,7 +39,11 @@ const PatientAllergies = () => {
                                     </Typography>
                                 </Box>
                             );
-                        })
+                        }):<Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
+                            <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
+                                Allergy : {data.message}
+                            </Typography>
+                        </Box>
                     }
                 </Box>
             </Box>
