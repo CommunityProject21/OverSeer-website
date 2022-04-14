@@ -30,23 +30,23 @@ const PersonalDetails = () => {
                     <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:4}}>Personal Details of the Patient :-</Typography>
                     <Box sx={{display: 'flex',flexDirection: 'column'}}>
                         <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Address of the Patient : {data.address}
+                            <b>Address of the Patient :</b> {data.address}
                         </Typography>
 
                         <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Zip Code :&nbsp;{data.zipcode}
+                            <b>Zip Code :</b>&nbsp;{data.zipcode}
                         </Typography>
 
                         <Typography className="genpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Gender :&nbsp;{data.gender} 
+                            <b>Gender :</b>&nbsp;{data.gender} 
                         </Typography>
 
                         <Typography className="racpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Race of the patient :&nbsp;{data.race}
+                            <b>Race of the patient :</b>&nbsp;{data.race}
                         </Typography>
 
                         <Typography className="ethpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Ethnicity of the patient :&nbsp;{data.ethnicity}
+                            <b>Ethnicity of the patient :</b>&nbsp;{data.ethnicity}
                         </Typography>
                     </Box>                
                 </Box>

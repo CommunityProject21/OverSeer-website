@@ -27,7 +27,7 @@ const PatientAllergies = () => {
                             return(
                                 <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                                     <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                        Allergy : {prop.allergy}
+                                        <b>Allergy :</b> {prop.allergy}
                                     </Typography>
 
                                     <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
@@ -41,7 +41,7 @@ const PatientAllergies = () => {
                             );
                         }):<Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                             <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                Allergy : {data.message}
+                                <b>Allergy :</b> {data.message}
                             </Typography>
                         </Box>
                     }

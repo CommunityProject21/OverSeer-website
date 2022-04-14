@@ -27,10 +27,10 @@ const MonitoringDevices = () => {
                             return(
                                 <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                                     <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                        ID : {prop.id}
+                                        <b>ID :</b> {prop.id}
                                     </Typography>
                                     <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                        Name :&nbsp;{prop.name}
+                                        <b>Name :</b>&nbsp;{prop.name}
                                     </Typography>
                                 </Box>
                             );
