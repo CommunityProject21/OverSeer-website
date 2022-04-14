@@ -26,7 +26,7 @@ const PatientObservation = () => {
                             return(
                                 <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                                     <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                        Condition : {prop.conditions}
+                                        <b>Condition :</b> {prop.conditions}
                                     </Typography>
 
                                     <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
