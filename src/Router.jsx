@@ -6,6 +6,8 @@ import PatientAllergies from './components/PatientAllergies/PatientAllergies';
 import PatientCondition from './components/PatientCondition/PatientCondition';
 import MonitoringDevices from './components/MonitoringDevices/MonitoringDevices';
 import Medication from './components/MedicationRecords/MedicationRecords';
+import SelfDiagnosis from './components/SelfDiagnosis/SelfDiagnosis';
+
 import Login from "./pages/Login/Login";
 import DefaultLayout from "./Layouts/Default.layout";
 
@@ -21,6 +23,8 @@ export default function Router() {
                 <Route path='/patient-condition' element={<DefaultLayout><PatientCondition /></DefaultLayout>} />
                 <Route path='/patient-devices' element={<DefaultLayout><MonitoringDevices /></DefaultLayout>} />
                 <Route path='/medication-records' element={<DefaultLayout><Medication /></DefaultLayout>} />
+                <Route path='/self-diagnosis' element={<DefaultLayout><SelfDiagnosis /></DefaultLayout>} />
+
             </Routes>
         </BRouter>
     );

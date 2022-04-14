@@ -1,8 +1,9 @@
 import React from 'react';
 import {Divider,List,ListItem,ListItemButton,ListItemIcon,ListItemText,Paper,Box} from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-import {AccountCircle,LocalHotel,ReceiptLong,VideoLabel,DoNotTouch,Dns} from '@mui/icons-material';
+import {AccountCircle,LocalHotel,ReceiptLong,VideoLabel,DoNotTouch,Dns,LocalPharmacy} from '@mui/icons-material';
 //import { width } from '@mui/system';
+// import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
 
 const data = [
     { link: '/home', icon: <AccountCircle />, label: 'Personal Details' },
@@ -11,6 +12,7 @@ const data = [
     { link: '/patient-condition', icon: <LocalHotel />, label: 'Patients Conditions' },
     { link: '/patient-devices', icon: <VideoLabel />, label: 'Monitoring Devices' },
     { link: '/medication-records', icon: <ReceiptLong />, label: 'Medication Records' },
+    { link: '/self-diagnosis', icon: <LocalPharmacy />, label: 'Self-Diagnosis'}
 ];
   
 const FireNav = styled(List)({
@@ -30,7 +32,7 @@ const FireNav = styled(List)({
 const AsideMenu = () => {
     const [open, setOpen] = React.useState(true);
     return(
-        <div>
+        <div style={{position: 'fixed',width: '18%'}}>
             <Box sx={{height: '100vh',width:"100%",backgroundColor: '#012a4a',display: 'flex'}}>
                 <Box sx={{ display: 'flex',width: '100%'}}>
                     <ThemeProvider 

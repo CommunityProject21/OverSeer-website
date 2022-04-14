@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Box,Typography,TextField,Button} from '@mui/material';
+import {Box,Typography,Button,Link} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
+import { style } from '@mui/system';
 
 const DashboardDetails = () => {
 
@@ -14,25 +15,56 @@ const DashboardDetails = () => {
         setUserid(e.target.value);
     };
 
+    // useEffect(() => {
+        // localStorage.setItem('user',JSON.stringify({}));
+    // },[])
+
     useEffect(() => {
-        if(displayid){
+            const newid = JSON.parse(localStorage.getItem('user'));
+            // const headers = {
+            //     "Authorization":`${newid.accesstoken}`,
+            //     "Access-Control-Allow-Credentials": true,
+            //     "Access-Control-Allow-Origin": true,
+            //     // 'Content-Type': 'application/json',
+            // }
+
+            const headers = {
+                'Authorization': `Bearer ${newid.accesstoken}`
+              }
+
+            const data = {userid:newid.userid}
+
+            console.log(headers);
             axios({
                 method: 'POST',
                 url: 'https://overseerbackend.herokuapp.com/details',
-                data: {userid:displayid}
+                data: {userid:newid.userid},
+                // headers: headers
+
             }).then(res => setData(res.data))
-        }
-    },[displayid]);
+
+            // axios.post('https://overseerbackend.herokuapp.com/details', data, {
+            //     headers: {
+            //         "Access-Control-Allow-Origin" : "*",
+            //         "Content-type": "Application/json",
+            //         "Authorization": `Bearer ${newid.accesstoken}`
+            //         }   
+            // }).then(res => setData(res))
+            // .then(res => console.log(res))
+
+            setUserid(newid.userid);
+    },[]);
 
 
     return(
         <div>
             <Box sx={{width: '100%'}}>
-                <Typography variant="h4" component="div" gutterBottom sx={{fontWeight: 900,m:2,ml:3,color: '#6c757d'}}>
+                <Typography variant="h4" component="div" gutterBottom sx={{fontWeight: 900,m:2,ml:3,color: '#6c757d',display: 'flex',justifyContent: 'space-between'}}>
                     OverSeer DashBoard
+                    <Link style={{textDecoration: 'none'}} href='/'><Button variant="outlined">LOG OUT</Button></Link>
                 </Typography>
             </Box>
-            <Box
+            {/* <Box
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '47%' },
@@ -64,14 +96,15 @@ const DashboardDetails = () => {
                 >
                     Search
                 </Button>
-            </Box>
+            </Box> */}
+
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                 <Box sx={{display: 'flex', width: '55%', }}>
                     <Typography sx={{ px: 2, fontSize: '120%'}} style={{fontWeight: '900'}}>
                         Patient ID :
                     </Typography>
                     <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                        {displayid}
+                        {userid}
                     </Typography>
                 </Box>
                 <Box sx={{display: 'flex', width: '55%', }}>
