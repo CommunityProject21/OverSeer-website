@@ -1,23 +1,49 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import {Box,Typography} from "@mui/material";
+import axios from 'axios';
 
 const PatientObservation = () => {
+
+    const [data,setData] = useState({});
+    var cnt = 0;
+    useEffect(() => {
+        const newid = JSON.parse(localStorage.getItem('user'));
+        axios({
+            method: 'POST',
+            url: 'https://overseerbackend.herokuapp.com/observations',
+            data: {userid:newid.userid}
+        })
+        .then(res => setData(res.data))
+    },[]);
+
     return(
         <div>
             <Box sx={{ display: 'flex',justifyContent: 'center', width: '100%'}}>
                 <Box sx={{width: '60%', display: 'flex',flexDirection: 'column',justifyContent: 'flex-start'}}>
-                    <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:4}}>Medical Details of the Patient :-</Typography>
-                    {/* <Box sx={{display: 'flex',flexDirection: 'column'}}>
-                        <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Address of the Patient : 1060 Hansen Overpass Suite 86, Boston, Massachusetts, Suffolk County</Typography>
-
-                        <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Zip Code :&nbsp;500008</Typography>
-
-                        <Typography className="genpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Gender :&nbsp;Male </Typography>
-
-                        <Typography className="racpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Race of the patient :&nbsp;White</Typography>
-
-                        <Typography className="ethpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>Ethnicity of the patient :&nbsp;nonhispanic</Typography>
-                    </Box> */}
+                    <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:1}}>Medical Details of the Patient :-</Typography>
+                    {
+                        data.observation !== undefined && data.observation.map((prop) => {
+                            // console.log(prop.observations);
+                            return(
+                                <Box>
+                                    {
+                                        (Object.keys(prop.observations).length > 3)?<Typography sx={{mt:3,mb:1,fontWeight: 'bold'}} component="div" variant="h5">Observation {++cnt}</Typography>:<></>
+                                    }
+                                    {
+                                        Object.keys(prop.observations).length > 3 && Object.keys(prop.observations).map((key, i) => {
+                                            return(
+                                                <Box component="div" variant="h4" key={i}>
+                                                    <Typography component="span" sx={{fontSize:'115%',fontWeight:600}}>{key}: </Typography>
+                                                    <Typography component="span" sx={{fontSize:'110%'}} >{prop.observations[key]}</Typography>
+                                                </Box>
+                                            );
+                                        })
+                                    }
+                                </Box>
+                            );
+                            
+                        })
+                    }
                 </Box>
             </Box>
         </div>
