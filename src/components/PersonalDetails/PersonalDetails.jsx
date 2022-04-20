@@ -20,7 +20,6 @@ const PersonalDetails = () => {
                 headers:{"x-access-token":newid.accesstoken}
             })
             .then(res => setData(res.data))
-
     },[]);
 
     return (
