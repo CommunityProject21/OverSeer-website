@@ -55,7 +55,6 @@ const DashboardDetails = () => {
             // .then(res => console.log(res))
 
             setUserid(newid.userid);
-            //console.log(data);
     },[displayid]);
 
 
