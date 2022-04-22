@@ -54,7 +54,7 @@ const DashboardDetails = () => {
             // }).then(res => setData(res))
             // .then(res => console.log(res))
 
-            setUserid(newid.userid);
+            setdisplayid(newid.userid);
             
     },[displayid]);
 
@@ -112,7 +112,7 @@ const DashboardDetails = () => {
                         Patient ID :
                     </Typography>
                     <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                        {(userid.length > 5)? userid:''}
+                        {(displayid.length > 5)? displayid:''}
                     </Typography>
                 </Box>
                 <Box sx={{display: 'flex', width: '55%', }}>
