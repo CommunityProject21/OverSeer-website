@@ -1,12 +1,19 @@
 # **OverSeer Website**
 
-**Project display a paperless health records of the patients like -**
+**Project display a paperless health records of the patients which includes details like -**
 - **Personal Details** 
 - **Patient Condition**
 - **Implants**
 - **Previous Reports**
 - **Previous Medical Records and**
 - **Self Diagnosis using Expert system we try to predict the disease or problem as per the Symptoms and mention them to follow adviced diet as per the prediction of the Expert System.**
+
+## Tech Stack :
+- React.js - Frontend
+- Flask - Backend
+- ML model - Expert System
+- API - for sending and recieving data from frontend to backen and Vice-versa.
+- Heroku - Cloud platfrom for Deployment
 
 ### **Website Hosted URL : [https://over-seer-website.herokuapp.com](https://over-seer-website.herokuapp.com)**
 
