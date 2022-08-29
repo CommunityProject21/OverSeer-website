@@ -25,8 +25,4 @@
 
 - Type : Patient
   - User/Patient ID : 72c0b9ce-7aa4-430b-aaff-bd0ce7846e55
-  - Password : pW9yrhzG*BZJ
-
-- Type : Patient
   - User/Patient ID : 1d604da9-9a81-4ba9-80c2-de3375d59b40
-  - Password : SU58gcpEFga#
