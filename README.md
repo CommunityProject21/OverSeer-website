@@ -1,6 +1,6 @@
 # **OverSeer Website**
 
-**Project display a paperless health records of the patients which includes details like -**
+**Client-Side Dashboard which display a paperless health records of the patients which includes details like -**
 - **Personal Details** 
 - **Patient Condition**
 - **Implants**
