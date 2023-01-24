@@ -26,11 +26,11 @@ const MedicationRecords = () => {
                         return(
                             <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                             <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Name : {prop.name}
+                            <b>Name :</b> {prop.name}
                             </Typography>
 
                             <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                            Prescription : &nbsp;{prop.prescription}
+                            <b>Prescription :</b> &nbsp;{prop.prescription}
                             </Typography>
 
                             <Typography className="genpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>

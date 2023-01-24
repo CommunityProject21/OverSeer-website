@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {Box,Typography,Button,Link} from '@mui/material';
+import {Box,Typography,Button,Link,TextField} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
-import { style } from '@mui/system';
+//import { style } from '@mui/system';
 
 const DashboardDetails = () => {
 
     const [data,setData] = useState({});
     const [userid,setUserid] = useState('');
     const [displayid,setdisplayid] = useState('');
+    const [doc,setDoc] = useState(false);
 
     const handleInputs = (e) =>{
         console.log(e.target.value);
@@ -28,13 +29,14 @@ const DashboardDetails = () => {
             //     // 'Content-Type': 'application/json',
             // }
 
-            const headers = {
-                'Authorization': `Bearer ${newid.accesstoken}`
-              }
+            // const headers = {
+            //     'Authorization': `Bearer ${newid.accesstoken}`
+            //   }
 
-            const data = {userid:newid.userid}
+            //const data = {userid:newid.userid}
+            (newid.userType === 'D')? setDoc(true):setDoc(false);
 
-            console.log(headers);
+            //console.log(headers);
             axios({
                 method: 'POST',
                 url: 'https://overseerbackend.herokuapp.com/details',
@@ -52,8 +54,9 @@ const DashboardDetails = () => {
             // }).then(res => setData(res))
             // .then(res => console.log(res))
 
-            setUserid(newid.userid);
-    },[]);
+            setdisplayid(newid.userid);
+            
+    },[displayid]);
 
 
     return(
@@ -64,39 +67,44 @@ const DashboardDetails = () => {
                     <Link style={{textDecoration: 'none'}} href='/'><Button variant="outlined">LOG OUT</Button></Link>
                 </Typography>
             </Box>
-            {/* <Box
-                component="form"
-                sx={{
-                    '& .MuiTextField-root': { m: 1, width: '47%' },
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    mt: 10,
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <TextField 
-                    sx={{backgroundColor: '#fff', borderColor: '#000', borderRadius: 2}}
-                    id="outlined-search" 
-                    label="Enter the Patient ID" 
-                    type="search"
-                    value={userid}
-                    onChange={handleInputs} 
-                />
-                <Button onClick={() => {
-                        setdisplayid(userid);
-                        localStorage.setItem('user',JSON.stringify({userid:userid}));
-                        }
-                    } 
-                    variant="contained" 
-                    size="large" 
-                    sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} 
-                    startIcon={<SearchIcon />}
+            
+            {
+                (doc !== undefined && doc)? 
+                <Box
+                    component="form"
+                    sx={{
+                        '& .MuiTextField-root': { m: 1, width: '47%' },
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        mt: 10,
+                    }}
+                    noValidate
+                    autoComplete="off"
                 >
-                    Search
-                </Button>
-            </Box> */}
+                    <TextField 
+                        sx={{backgroundColor: '#fff', borderColor: '#000', borderRadius: 2}}
+                        id="outlined-search" 
+                        label="Enter the Patient ID" 
+                        type="search"
+                        value={(userid.length > 5)? userid:''}
+                        onChange={handleInputs} 
+                    />
+                    <Button onClick={() => {
+                            setdisplayid(userid);
+                            localStorage.setItem('user',JSON.stringify({userid:userid,userType:"D"}));
+                            }
+                        } 
+                        href="/home"
+                        variant="contained" 
+                        size="large" 
+                        sx={{ my:1.2, fontSize: 'large', fontWeight: 'bold'}} 
+                        startIcon={<SearchIcon />}
+                    >
+                        Search
+                    </Button>
+                </Box>:<></>
+            }
 
             <Box sx={{display: 'flex', gap: 1, flexDirection: 'column', mt: 3, alignItems: 'center', }}>
                 <Box sx={{display: 'flex', width: '55%', }}>
@@ -104,7 +112,7 @@ const DashboardDetails = () => {
                         Patient ID :
                     </Typography>
                     <Typography sx={{ fontSize: '120%',fontWeight: 'medium' }}>
-                        {userid}
+                        {(displayid.length > 5)? displayid:''}
                     </Typography>
                 </Box>
                 <Box sx={{display: 'flex', width: '55%', }}>

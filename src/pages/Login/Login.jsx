@@ -1,22 +1,28 @@
 import React,{useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import { Grid, TextField, Button, InputAdornment, ButtonGroup, Typography } from "@material-ui/core"
 import { AccountCircle, LockRounded } from '@material-ui/icons';
 import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
 import KeyIcon from '@mui/icons-material/Key';
 import axios from 'axios';
+import {Stack,ToggleButton,ToggleButtonGroup} from '@mui/material';
 
 
 export default function Login() {
 
     const [id,setId] = useState();
     const [password,setPassword] = useState();
-    const [data,setData] = useState({login:false});
+    const [data,setData] = useState();
     const history = useNavigate();
+    const [alignment, setAlignment] = React.useState('left');
+
+    const handleAlignment = (
+        event: React.MouseEvent<HTMLElement>,
+        newAlignment: string,
+      ) => {
+        setAlignment(newAlignment);
+        console.log(newAlignment);
+      };
 
     const handleInputs = (e) => {
         console.log(e.target.value);
@@ -33,8 +39,14 @@ export default function Login() {
     },[])
 
     useEffect(() => {
-        if(data.login === true){
-            localStorage.setItem('user',JSON.stringify({userid:data.userid,accesstoken:data.token}));
+        if(data!==undefined && data.login === true){
+            localStorage.setItem('user',JSON.stringify(
+                {
+                    userid:data.userid,
+                    accesstoken:data.token,
+                    userType:(alignment==='left')? 'P':'D'
+                }
+            ));          
             history('/home');
         }
     },[data]);
@@ -42,7 +54,7 @@ export default function Login() {
   return (
       <Box style={{width:'100%',height:'100vh',display: 'flex',justifyContent: 'center',alignItems: 'center'}}>
           
-            <Box sx={{border: '1px solid #000',display: 'flex',flexDirection: 'column',alignItems: 'center',justifyContent: 'center',padding: '3%'}}>
+            <Box sx={{border: '1px solid #000',display: 'flex',flexDirection: 'column',alignItems: 'center',justifyContent: 'center', p: 5 }}>
                 <Typography>
                     <img 
                         src="https://cdn-icons-png.flaticon.com/128/2464/2464632.png"
@@ -50,13 +62,30 @@ export default function Login() {
                         alt="logo"
                     />
                 </Typography>
-                <Box sx={{backgroundColor: '#edf2f4',p: 1,mt:1}}>
-                    PATIENT LOGIN
-                </Box>
+                <Stack style={{marginTop:'5%'}} direction="row" spacing={4}>
+                    <ToggleButtonGroup
+                        value={alignment}
+                        sx={{gap:2}}
+                        exclusive
+                        onChange={handleAlignment}
+                        aria-label="text alignment"
+                    >
+                        <ToggleButton value="left" aria-label="left aligned">
+                            <Box sx={{px:1,py:.5}}>
+                                PATIENT
+                            </Box>
+                        </ToggleButton>
+                        <ToggleButton value="right" aria-label="right aligned">
+                            <Box sx={{px:1,py:.5}}>
+                                DOCTOR
+                            </Box>
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </Stack>
 
                 <TextField
                     // sx={{mt: 100}}
-                    style={{marginTop: '10%'}}
+                    style={{marginTop: '10%',width:'100%'}}
                     id="input-with-icon-textfield"
                     label="Enter User ID"
                     onChange={handleInputs}
@@ -70,7 +99,7 @@ export default function Login() {
                     variant="standard"
                 />
                 <TextField
-                    style={{marginTop: '10%'}}
+                    style={{marginTop: '10%',width:'100%'}}
                     id="input-with-icon-textfield"
                     label="Password"
                     type='password'
@@ -93,14 +122,20 @@ export default function Login() {
                                     data: {
                                         userid:id,
                                         password:password,
-                                        usertype:"P"
+                                        usertype:(alignment==='left')? 'P':'D'
                                     }
                                 })
-                                .then(res => setData(res.data));
+                                .then(res => setData(res.data))
+                                .catch((error)=>{
+                                    setData({login:false})
+                                })
                             }}
                         >
                             Log in
                         </Button>
+                </Box>
+                <Box sx={{mt:3,color: 'red'}}>
+                    {(data !== undefined && data.login === false)? 'Wrong Credentials':''}
                 </Box>
             </Box>
 

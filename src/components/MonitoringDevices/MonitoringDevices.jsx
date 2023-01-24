@@ -22,18 +22,24 @@ const MonitoringDevices = () => {
                 <Box sx={{width: '60%', display: 'flex',flexDirection: 'column',justifyContent: 'flex-start'}}>
                     <Typography component="div" variant="h5" sx={{fontWeight: 'bold',mb:4}}>Monitoring devices/Implants for the Patient :-</Typography>
                     {
-                        data.devices !== undefined && data.devices.map((prop)=>{
+                        (data.devices !== undefined && data.devices !== "No implants for the given User.")?
+                        data.devices.map((prop)=>{
                             return(
                                 <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
                                     <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                        ID : {prop.id}
+                                        <b>ID :</b> {prop.id}
                                     </Typography>
                                     <Typography className="zippd"component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
-                                        Name :&nbsp;{prop.name}
+                                        <b>Name :</b>&nbsp;{prop.name}
                                     </Typography>
                                 </Box>
                             );
-                        })
+                        }):
+                        <Box sx={{mb: 5,display: 'flex',flexDirection: 'column'}}>
+                            <Typography className="addpd" component="div" variant="body1" sx={{fontSize: '115%',mb:1}}>
+                                {data.devices}
+                            </Typography>
+                        </Box>
                     }
                 </Box>
             </Box>
