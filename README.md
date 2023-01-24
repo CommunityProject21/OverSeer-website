@@ -13,9 +13,9 @@
 - Flask - Backend
 - ML model - Expert System
 - API - for sending and recieving data from frontend to backen and Vice-versa.
-- Heroku - Cloud platfrom for Deployment
+- Vercel - Cloud platfrom for Deployment
 
-### **Website Hosted URL : [https://over-seer-website.vercel.app](https://over-seer-website.vercel.app)**
+### **Website Hosted URL : [over-seer-website.vercel.app](https://over-seer-website.vercel.app)**
 
 ### **Testing Credentials :**
 
