@@ -11,6 +11,10 @@ const PersonalDetails = () => {
     //     localStorage.setItem('user',JSON.stringify({}));
     // },[])
 
+    // useEffect(() => {
+    //     localStorage.setItem('user',JSON.stringify({}));
+    // },[])
+
     useEffect(() => {
             const newid = JSON.parse(localStorage.getItem('user'));
             axios({
