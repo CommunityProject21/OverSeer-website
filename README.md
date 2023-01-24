@@ -15,7 +15,7 @@
 - API - for sending and recieving data from frontend to backen and Vice-versa.
 - Heroku - Cloud platfrom for Deployment
 
-### **Website Hosted URL : [https://over-seer-website.herokuapp.com](https://over-seer-website.herokuapp.com)**
+### **Website Hosted URL : [https://over-seer-website.vercel.app](https://over-seer-website.vercel.app)**
 
 ### **Testing Credentials :**
 
