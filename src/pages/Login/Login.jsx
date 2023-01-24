@@ -46,7 +46,7 @@ export default function Login() {
                     accesstoken:data.token,
                     userType:(alignment==='left')? 'P':'D'
                 }
-            ));
+            ));          
             history('/home');
         }
     },[data]);

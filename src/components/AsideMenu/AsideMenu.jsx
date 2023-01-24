@@ -1,11 +1,9 @@
 import React from 'react';
 import {Divider,List,ListItem,ListItemButton,ListItemIcon,ListItemText,Paper,Box} from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-
 import {AccountCircle,LocalHotel,ReceiptLong,VideoLabel,DoNotTouch,Dns,LocalPharmacy} from '@mui/icons-material';
 //import { width } from '@mui/system';
 // import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-
 
 const data = [
     { link: '/home', icon: <AccountCircle />, label: 'Personal Details' },
